@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://localhost/MyWebsites/ManageFiles/User/MainPage/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Bootstrap Example</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	
+
+  
+  <style>
+  
+	html,body{
+		height:100%;
+	}
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+	
+	
+	
+
+	
+	.file-card{
+		height:300px; 
+		background-color:#dadee5; 
+		
+		border:2px solid black;
+	}
+	
+	.file-card:hover{
+		background-color:#7fabdb; 
+	}
+	
+	.upload-label{
+		background-color:#3f51b5; 
+		padding:20px; 
+		border-radius:15px; 
+		color:white;
+	}
+
+
+	
+  </style>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>                        
+		  </button>
+		  <a class="navbar-brand" href="http://localhost/MyWebsites/ManageFiles/User/MainPage/#">Logo</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+		  <ul class="nav navbar-nav">
+			<li class="active"><a href="http://localhost/MyWebsites/ManageFiles/User/MainPage/#">Home</a></li>
+			<li><a href="http://localhost/MyWebsites/ManageFiles/User/MainPage/#">About</a></li>
+			<li><a href="http://localhost/MyWebsites/ManageFiles/User/MainPage/#">Projects</a></li>
+			<li><a href="http://localhost/MyWebsites/ManageFiles/User/MainPage/#">Contact</a></li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+			<!--
+			<li><a href="http://localhost/MyWebsites/ManageFiles/User/MainPage/#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			-->
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+	  
+	<div class="container-fluid text-center" style="
+		height: 90%;
+	">    
+	  <div class="row content" style="
+		height: 100%;
+	">
+		<div class="col-sm-2 sidenav">
+		  <p><a href="http://localhost/MyWebsites/ManageFiles/User/MainPage/#">Link</a></p>
+		  <p><a href="http://localhost/MyWebsites/ManageFiles/User/MainPage/#">Link</a></p>
+		  <p><a href="http://localhost/MyWebsites/ManageFiles/User/MainPage/#">Link</a></p>
+		</div>
+		<div class="col-sm-9 text-left" style="height: 100%; overflow-y:scroll;"> 
+		  <h1>Welcome</h1>
+		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+		  
+		  <div class="col-sm-4 file-card" data-toggle="modal" data-target="#UploadModal">
+			<center>
+				<span style="font-size:150px; margin-top:60px;" class="glyphicon glyphicon-plus"></span>
+				<br />
+				<h1>Add New File</h1>
+			</center>
+		  </div>
+		  
+		  <div class="col-sm-4 file-card" data-toggle="modal" data-target="#UploadModal">
+			<center>
+				<span style="font-size:150px; margin-top:60px;" class="glyphicon glyphicon-plus"></span>
+				<br />
+				<h1>Cerere Inscriere</h1>
+			</center>
+		  </div>
+		  
+		  <div class="col-sm-4 file-card">
+			<table style="width:100%;">
+				<tbody>
+					<tr style="width:100%;">
+						<td style="width:75%;"></td>
+						<td style="width:25%;">
+							<h2 style="color:red">
+								<span style="float:right;" class="glyphicon glyphicon-trash"></span>
+							</h2>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<center>
+				<span class="glyphicon glyphicon-file" style="font-size:100px;"></span>
+			
+				<p style="font-size:30px;">
+					FileName23342536479
+				</p>
+			
+				<p style="font-size:20px;">
+					Date: 06/03/2019
+				</p>
+			</center>
+			<table style="width:100%;">
+				<tbody>
+					<tr style="width:100%;">
+						<td style="width:50%;">
+						<center>
+							<button type="button" style="width:75%;" class="btn btn-light">Seen</button>
+						</center>
+							
+						</td>
+						<td style="width:50%;">
+							<center>
+								<button type="button" style="width:75%;" class="btn btn-light">Reviewed</button>
+							</center>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		  </div>
+		  <div class="col-sm-4 file-card"></div>
+		  <div class="col-sm-4 file-card"></div>
+		  <div class="col-sm-4 file-card"></div>
+		  <div class="col-sm-4 file-card"></div>
+		  <div class="col-sm-4 file-card"></div>
+		  <div class="col-sm-4 file-card"></div>
+		  <div class="col-sm-4 file-card"></div>
+		  <div class="col-sm-4 file-card"></div>
+		  <div class="col-sm-4 file-card"></div>
+		  <div class="col-sm-4 file-card"></div>
+
+		</div>
+		<div class="col-sm-1 sidenav">
+		  <div class="well">
+			<p>ADS</p>
+		  </div>
+		  <div class="well">
+			<p>ADS</p>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<footer class="container-fluid text-center">
+	  <p>Footer Text</p>
+	</footer>
+
+	<!--Modals Here-->
+		
+<!-- -->
+	<div id="UploadModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-lg">
+
+		 Modal content
+		<div class="modal-content ">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Modal Header</h4>
+		  </div>
+		  <div class="modal-body">
+		  
+		  
+			
+		  
+			<ul class="nav nav-tabs nav-justified" style="overflow-x:scroll">
+				<li class="active"><a data-toggle="tab" href="#home">Cerere inscriere </a></li>
+				<li ><a style="height:100%;" data-toggle="tab" href="#menu1">CV</a></li>
+				<li ><a style="height:100%;" data-toggle="tab" href="#menu2">Formular de autoevaluare </a></li>
+				<li><a style="height:100%;" data-toggle="tab" href="#menu3">Scrisori de recomandare</a></li>
+				<li><a style="height:100%;" data-toggle="tab" href="#menu4">Raport de sinteza -lista proiecte </a></li>
+				<li><a style="height:100%;" data-toggle="tab" href="#menu5">Evaluarea complexitatii proiectelor </a></li>
+				<li><a style="height:100%;" data-toggle="tab" href="#menu5">Formular de auto-evaluare a eligibilitatii </a></li>
+			  </ul>
+
+			  <div class="tab-content">
+				<div id="home" class="tab-pane fade in active">
+				<center>
+					<h1>Cerere Inscriere</h1>
+					<form method="POST" enctype="multipart/form-data" target="_blank" action="http://localhost/MyWebsites/ManageFiles/User/Back-end/UploadFile/CerereInscriere.php" >
+						<input type="text" class="UserIdInput" name="UserID" >
+						<p><br /></p>
+						<p>
+							<label class="upload-label" for="CerereInscriere">Selecteaza un Fisier</label>
+							<input style="display:none;" type="file" id="CerereInscriere" name="fileToUpload" />
+						</p>
+						<button type="sumit" class="btn btn-success" >Trimite</button>
+					</form>
+				</center>
+				  
+				</div>
+				<div id="menu1" class="tab-pane fade">
+				  <center>
+					<h1>Curriculum Vitae </h1>
+					<form method="POST" enctype="multipart/form-data" target="_blank" action="http://localhost/MyWebsites/ManageFiles/User/Back-end/UploadFile/CV.php" >
+						<input type="text" class="UserIdInput" name="UserID" >
+						<p><br /></p>
+						<p>
+							<label class="upload-label" for="CV">Selecteaza un Fisier</label>
+							<input style="display:none;" type="file" id="CV" name="fileToUpload" />
+						</p>
+						<button type="sumit" class="btn btn-success" >Trimite</button>
+					</form>
+				</center>
+				  
+				</div>
+				<div id="menu2" class="tab-pane fade">
+				  <h3>Menu 2</h3>
+				  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+				</div>
+				<div id="menu3" class="tab-pane fade">
+				  <h3>Menu 3</h3>
+				  <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+				</div>
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+
+	  </div>
+	</div>
+	
+
+
+	
+	<script>
+		var UserId=localStorage.getItem('UserId');
+		window.alert(UserId);
+		var list = document.getElementsByClassName('UserIdInput');
+		var n;
+		for (n = 0; n < list.length; ++n) {
+			list[n].value=UserId;
+		}
+		
+	</script>
+	
+	
+</body>
+</html>
