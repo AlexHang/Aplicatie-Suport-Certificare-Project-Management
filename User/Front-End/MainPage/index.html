@@ -9,11 +9,14 @@
 
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	
-
+	<!--Angular JS-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	
+	<script type="text/javascript" src="scripts/controller.js"></script>
   
   <style>
   
@@ -65,6 +68,7 @@
 	
 	.file-card:hover{
 		background-color:#7fabdb; 
+
 	}
 	
 	.upload-label{
@@ -78,7 +82,7 @@
 	
   </style>
 </head>
-<body>
+<body  ng-app="myApp"   >
 
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
@@ -117,7 +121,7 @@
 		  <p><a href="http://localhost/MyWebsites/ManageFiles/User/MainPage/#">Link</a></p>
 		  <p><a href="http://localhost/MyWebsites/ManageFiles/User/MainPage/#">Link</a></p>
 		</div>
-		<div class="col-sm-9 text-left" style="height: 100%; overflow-y:scroll;"> 
+		<div class="col-sm-9 text-left" ng-controller="myCtrl" style="height: 100%; overflow-y:scroll;"> 
 		  <h1>Welcome</h1>
 		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
@@ -129,14 +133,227 @@
 				<h1>Add New File</h1>
 			</center>
 		  </div>
-		  
-		  <div class="col-sm-4 file-card" data-toggle="modal" data-target="#UploadModal">
+		  <!--cerere inscriere-->
+		  <div ng-if="UserFiles['Cerere'].exists!=1" class="col-sm-4 file-card" data-toggle="modal" data-target="#UploadModal">
 			<center>
 				<span style="font-size:150px; margin-top:60px;" class="glyphicon glyphicon-plus"></span>
 				<br />
-				<h1>Cerere Inscriere</h1>
+				<h3>Cerere Inscriere</h3>
 			</center>
 		  </div>
+		  
+		  <div ng-if="UserFiles['Cerere'].exists==1" class="col-sm-4 file-card" ng-href="UserFiles['Cerere'].path">
+			
+				<table style="width:100%;">
+					<tbody>
+						<tr style="width:100%;">
+							<td style="width:75%;"></td>
+							<td style="width:25%;">
+								<h2 style="color:red">
+									<span style="float:right;" class="glyphicon glyphicon-trash"></span>
+								</h2>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<a ng-href="{{UserFiles['Cerere'].path}}" target="_blank">
+					<center>
+						<span class="glyphicon glyphicon-file" style="font-size:100px;"></span>
+					
+						<p style="font-size:30px;">
+							Cerere Inscriere
+						</p>
+					</center>
+					<table style="width:100%;">
+						<tbody>
+							<tr style="width:100%;">
+								<td style="width:50%;">
+								<center>
+									<button type="button" style="width:75%;" class="btn btn-success">Seen</button>
+								</center>
+									
+								</td>
+								<td style="width:50%;">
+									<center>
+										<button type="button" style="width:75%;" class="btn btn-light">Reviewed</button>
+									</center>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</a>
+		  </div>
+		  
+		  
+		  
+		  <!--CV-->
+		  <div ng-if="UserFiles['CV'].exists!=1" class="col-sm-4 file-card" data-toggle="modal" data-target="#UploadModal">
+			<center>
+				<span style="font-size:150px; margin-top:60px;" class="glyphicon glyphicon-plus"></span>
+				<br />
+				<h3>CV</h3>
+			</center>
+		  </div>
+		  
+		  <div ng-if="UserFiles['CV'].exists==1" class="col-sm-4 file-card" >
+			
+				<table style="width:100%;">
+					<tbody>
+						<tr style="width:100%;">
+							<td style="width:75%;"></td>
+							<td style="width:25%;">
+								<h2 style="color:red">
+									<span style="float:right;" class="glyphicon glyphicon-trash"></span>
+								</h2>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<a ng-href="{{UserFiles['CV'].path}}" target="_blank">
+					<center>
+						<span class="glyphicon glyphicon-file" style="font-size:100px;"></span>
+					
+						<p style="font-size:30px;">
+							CV
+						</p>
+					</center>
+					<table style="width:100%;">
+						<tbody>
+							<tr style="width:100%;">
+								<td style="width:50%;">
+								<center>
+									<button type="button" style="width:75%;" class="btn btn-success">Seen</button>
+								</center>
+									
+								</td>
+								<td style="width:50%;">
+									<center>
+										<button type="button" style="width:75%;" class="btn btn-light">Reviewed</button>
+									</center>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</a>
+		  </div>
+		  
+		  
+		  <!--FormularAutoEvaluare-->
+		  <div ng-if="UserFiles['FormularAutoEvaluare'].exists!=1" class="col-sm-4 file-card" data-toggle="modal" data-target="#UploadModal">
+			<center>
+				<span style="font-size:150px; margin-top:60px;" class="glyphicon glyphicon-plus"></span>
+				<br />
+				<h3>Formular Auto-Evaluare</h3>
+			</center>
+		  </div>
+		  
+		  <div ng-if="UserFiles['FormularAutoEvaluare'].exists==1" class="col-sm-4 file-card" >
+			
+				<table style="width:100%;">
+					<tbody>
+						<tr style="width:100%;">
+							<td style="width:75%;"></td>
+							<td style="width:25%;">
+								<h2 style="color:red">
+									<span style="float:right;" class="glyphicon glyphicon-trash"></span>
+								</h2>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<a ng-href="{{UserFiles['FormularAutoEvaluare'].path}}" target="_blank">
+					<center>
+						<span class="glyphicon glyphicon-file" style="font-size:100px;"></span>
+					
+						<p style="font-size:30px;">
+							Formular Auto-Evaluare
+						</p>
+					</center>
+					<table style="width:100%;">
+						<tbody>
+							<tr style="width:100%;">
+								<td style="width:50%;">
+								<center>
+									<button type="button" style="width:75%;" class="btn btn-success">Seen</button>
+								</center>
+									
+								</td>
+								<td style="width:50%;">
+									<center>
+										<button type="button" style="width:75%;" class="btn btn-light">Reviewed</button>
+									</center>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</a>
+		  </div>
+		  
+		  
+		  
+		  <!--Scrisoare Recomandare-->
+		  <div ng-if="UserFiles['Recomadare'].exists!=1" class="col-sm-4 file-card" data-toggle="modal" data-target="#UploadModal">
+			<center>
+				<span style="font-size:150px; margin-top:60px;" class="glyphicon glyphicon-plus"></span>
+				<br />
+				<h3>Scrisori Recomadare</h3>
+			</center>
+		  </div>
+		  
+		  <div ng-if="UserFiles['Recomadare'].exists==1" class="col-sm-4 file-card" >
+			
+				<table style="width:100%;">
+					<tbody>
+						<tr style="width:100%;">
+							<td style="width:75%;"></td>
+							<td style="width:25%;">
+								<h2 style="color:red">
+									<span style="float:right;" class="glyphicon glyphicon-trash"></span>
+								</h2>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<a ng-href="{{UserFiles['Recomadare'].path}}" target="_blank">
+					<center>
+						<span class="glyphicon glyphicon-file" style="font-size:100px;"></span>
+					
+						<p style="font-size:30px;">
+							Scrisori Recomadare
+						</p>
+					</center>
+					<table style="width:100%;">
+						<tbody>
+							<tr style="width:100%;">
+								<td style="width:50%;">
+								<center>
+									<button type="button" style="width:75%;" class="btn btn-success">Seen</button>
+								</center>
+									
+								</td>
+								<td style="width:50%;">
+									<center>
+										<button type="button" style="width:75%;" class="btn btn-light">Reviewed</button>
+									</center>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</a>
+		  </div>
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
 		  
 		  <div class="col-sm-4 file-card">
 			<table style="width:100%;">
@@ -223,17 +440,29 @@
 		  
 		  
 			
-		  
+<!--
 			<ul class="nav nav-tabs nav-justified" style="overflow-x:scroll">
 				<li class="active"><a data-toggle="tab" href="#home">Cerere inscriere </a></li>
-				<li ><a style="height:100%;" data-toggle="tab" href="#menu1">CV</a></li>
-				<li ><a style="height:100%;" data-toggle="tab" href="#menu2">Formular de autoevaluare </a></li>
+				<li><a style="height:100%;" data-toggle="tab" href="#menu1">CV</a></li>
+				<li><a style="height:100%;" data-toggle="tab" href="#menu2">Formular de autoevaluare </a></li>
 				<li><a style="height:100%;" data-toggle="tab" href="#menu3">Scrisori de recomandare</a></li>
 				<li><a style="height:100%;" data-toggle="tab" href="#menu4">Raport de sinteza -lista proiecte </a></li>
 				<li><a style="height:100%;" data-toggle="tab" href="#menu5">Evaluarea complexitatii proiectelor </a></li>
-				<li><a style="height:100%;" data-toggle="tab" href="#menu5">Formular de auto-evaluare a eligibilitatii </a></li>
-			  </ul>
-
+				<li><a style="height:100%;" data-toggle="tab" href="#menu5">Formular de auto-evaluare a eligibilitatii</a></li>
+			</ul>
+-->			
+			<center>
+				<button style="margin:10px;" class="btn btn-default" data-toggle="tab" href="#home">Cerere inscriere</button>
+				<button style="margin:10px;" class="btn btn-default" data-toggle="tab" href="#menu1">CV (Curriculum Vitae)</button>
+				<button style="margin:10px;" class="btn btn-default" data-toggle="tab" href="#menu2">Formular de autoevaluare</button>
+				<button style="margin:10px;" class="btn btn-default" data-toggle="tab" href="#menu3">Scrisori de recomandare</button>
+				<button style="margin:10px;" class="btn btn-default" data-toggle="tab" href="#menu4">Raport de sinteza -lista proiecte</button>
+				<button style="margin:10px;" class="btn btn-default" data-toggle="tab" href="#menu5">Evaluarea complexitatii proiectelor</button>
+				<button style="margin:10px;" class="btn btn-default" data-toggle="tab" href="#menu5">Formular de auto-evaluare a eligibilitatii</button>
+			
+			</center>
+			
+		
 			  <div class="tab-content">
 				<div id="home" class="tab-pane fade in active">
 				<center>
@@ -266,12 +495,32 @@
 				  
 				</div>
 				<div id="menu2" class="tab-pane fade">
-				  <h3>Menu 2</h3>
-				  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+					<center>
+					<h1>Formular AutoEvaluare </h1>
+					<form method="POST" enctype="multipart/form-data" target="_blank" action="http://localhost/MyWebsites/ManageFiles/User/Back-end/UploadFile/AutoEvaluare.php" >
+						<input type="text" class="UserIdInput" name="UserID" >
+						<p><br /></p>
+						<p>
+							<label class="upload-label" for="AutoEvaluare">Selecteaza un Fisier</label>
+							<input style="display:none;" type="file" id="AutoEvaluare" name="fileToUpload" />
+						</p>
+						<button type="sumit" class="btn btn-success" >Trimite</button>
+					</form>
+					</center>
 				</div>
 				<div id="menu3" class="tab-pane fade">
-				  <h3>Menu 3</h3>
-				  <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+					<center>
+					<h1>Scrisori de Recomadare (Arhiva .zip)</h1>
+					<form method="POST" enctype="multipart/form-data" target="_blank" action="http://localhost/MyWebsites/ManageFiles/User/Back-end/UploadFile/ScrisoriRecomadare.php" >
+						<input type="text" class="UserIdInput" name="UserID" >
+						<p><br /></p>
+						<p>
+							<label class="upload-label" for="Recomadare">Selecteaza un Fisier</label>
+							<input style="display:none;" type="file" id="Recomadare" name="fileToUpload" />
+						</p>
+						<button type="sumit" class="btn btn-success" >Trimite</button>
+					</form>
+					</center>
 				</div>
 			  </div>
 		  </div>

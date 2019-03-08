@@ -22,7 +22,7 @@ $target_dir = "../../UploadedFiles/User".$UserID."/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $FileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-$target_file = $target_dir."CV.".$FileType;
+$target_file = $target_dir."Recomadare.".$FileType;
 // Check if image file is a actual image or fake image
 /*
 if(isset($_POST["submit"])) {
@@ -38,29 +38,25 @@ if(isset($_POST["submit"])) {
 
 // Check if file already exists
 if (file_exists($target_file)) {
-   // echo "Sorry, file already exists.";
-   // $uploadOk = 0;
-   
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
 }
 */
-foreach(glob("../../UploadedFiles/User".$UserID."/CV.*") as $files){
+
+	foreach(glob("../../UploadedFiles/User".$UserID."/Recomadare.*") as $files){
 		unlink($files);
 	}
+
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-	
-	
-
-
-	
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 		
-		$sql = "SELECT * FROM `files` WHERE User_ID = ".$UserID." AND FileName Like '%CV%'";
+		$sql = "SELECT * FROM `files` WHERE User_ID = ".$UserID." AND FileName Like '%Recomadare%'";
 		$result = $conn->query($sql);
 
 
@@ -68,7 +64,7 @@ if ($uploadOk == 0) {
 			echo "The file has been modified";
 		}else{
 			$stmt = $conn->prepare("INSERT INTO `files` (`User_ID`, `FileName`)
-			VALUES (?, 'CV');");
+			VALUES (?, 'Recomadare');");
 			$stmt->bind_param("s", $UserID);
 			$stmt->execute();
 		}

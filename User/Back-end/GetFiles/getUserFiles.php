@@ -22,27 +22,47 @@
 	echo json_encode($response);  
 	*/
 	
-	if(file_exists($path."/CerereInscriere.pdf")){
-		echo "yes";
-		$cerere=new UserFile(1,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/CerereInscriere.pdf");
+	if($matching = glob($path."/CerereInscriere.*")){
+		//echo "yes";
+		$cerere=new UserFile(1,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/CerereInscriere.".pathinfo($matching[0])['extension']);
 		
 	}else{
-		echo "no";
+		//echo "no";
 		$cerere=new UserFile(0," ");
 	}
 	
 	
-	if(file_exists($path."/CV.pdf")){
+	if($matching = glob($path."/CV.*")){
 		//echo "yes";
-		$CV=new UserFile(1,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/CV.pdf");
+		$CV=new UserFile(1,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/CV.".pathinfo($matching[0])['extension']);
 		
 	}else{
 		//echo "no";
 		$CV=new UserFile(0," ");
 	}
 	
+	
+	if($matching = glob($path."/AutoEvaluare.*")){
+		//echo "yes";
+		$AutoEvaluare=new UserFile(1,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/AutoEvaluare.".pathinfo($matching[0])['extension']);
+		
+	}else{
+		//echo "no";
+		$AutoEvaluare=new UserFile(0," ");
+	}
+	if($matching = glob($path."/Recomadare.*")){
+		//echo "yes";
+		$Recomadare=new UserFile(1,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/Recomadare.".pathinfo($matching[0])['extension']);
+		
+	}else{
+		//echo "no";
+		$Recomadare=new UserFile(0," ");
+	}
+	
 	$files["Cerere"]=$cerere;
 	$files["CV"]=$CV;
+	$files["FormularAutoEvaluare"]=$AutoEvaluare;
+	$files["Recomadare"]=$Recomadare;
 	//print_r($files);
 	echo json_encode($files);
 	
