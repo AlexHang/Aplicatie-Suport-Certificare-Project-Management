@@ -66,6 +66,10 @@ if ($uploadOk == 0) {
 
 		if ($result->num_rows > 0) {
 			echo "The file has been modified";
+			
+			//"UPDATE `files` SET `FileName` = 'CV.pdf' WHERE `files`.`FileId` = 4;"
+			
+			
 		}else{
 			$stmt = $conn->prepare("INSERT INTO `files` (`User_ID`, `FileName`)
 			VALUES (?, 'CV');");

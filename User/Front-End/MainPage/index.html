@@ -175,7 +175,9 @@
 								</td>
 								<td style="width:50%;">
 									<center>
-										<button type="button" style="width:75%;" class="btn btn-light">Reviewed</button>
+										<button type="button" ng-if="UserFiles['Cerere'].reviewed==-1" style="width:75%;" class="btn btn-danger">Respins</button>
+										<button type="button" ng-if="UserFiles['Cerere'].reviewed==0" style="width:75%;" class="btn btn-info">In asteptare</button>
+										<button type="button" ng-if="UserFiles['Cerere'].reviewed==1" style="width:75%;" class="btn btn-success">Admis</button>
 									</center>
 								</td>
 							</tr>
@@ -228,7 +230,10 @@
 								</td>
 								<td style="width:50%;">
 									<center>
-										<button type="button" style="width:75%;" class="btn btn-light">Reviewed</button>
+										<button type="button" ng-if="UserFiles['CV'].reviewed==-1" style="width:75%;" class="btn btn-danger">Respins</button>
+										<button type="button" ng-if="UserFiles['CV'].reviewed==0" style="width:75%;" class="btn btn-info">In asteptare</button>
+										<button type="button" ng-if="UserFiles['CV'].reviewed==1" style="width:75%;" class="btn btn-success">Admis</button>
+										
 									</center>
 								</td>
 							</tr>
@@ -280,7 +285,10 @@
 								</td>
 								<td style="width:50%;">
 									<center>
-										<button type="button" style="width:75%;" class="btn btn-light">Reviewed</button>
+										<button type="button" ng-if="UserFiles['FormularAutoEvaluare'].reviewed==-1" style="width:75%;" class="btn btn-danger">Respins</button>
+										<button type="button" ng-if="UserFiles['FormularAutoEvaluare'].reviewed==0" style="width:75%;" class="btn btn-info">In asteptare</button>
+										<button type="button" ng-if="UserFiles['FormularAutoEvaluare'].reviewed==1" style="width:75%;" class="btn btn-success">Admis</button>
+										
 									</center>
 								</td>
 							</tr>
@@ -333,7 +341,9 @@
 								</td>
 								<td style="width:50%;">
 									<center>
-										<button type="button" style="width:75%;" class="btn btn-light">Reviewed</button>
+										<button type="button" ng-if="UserFiles['Recomadare'].reviewed==-1" style="width:75%;" class="btn btn-danger">Respins</button>
+										<button type="button" ng-if="UserFiles['Recomadare'].reviewed==0" style="width:75%;" class="btn btn-info">In asteptare</button>
+										<button type="button" ng-if="UserFiles['Recomadare'].reviewed==1" style="width:75%;" class="btn btn-success">Admis</button>
 									</center>
 								</td>
 							</tr>

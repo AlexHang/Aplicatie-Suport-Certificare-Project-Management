@@ -3,15 +3,17 @@
 		public $exists;
 		public $path;
 		public $reviewed;
-		public function __construct($e,$r,$p){
+		public $id;
+		public function __construct($e,$r,$p,$i){
 			$this->exists=$e;
 			$this->reviewed=$r;
 			$this->path=$p;
+			$this->id=$i;
 		}
 		
 	}
-	$UserId=12;
-	$path    = '../../UploadedFiles/User'.$UserId;
+	$UserId=$_GET["UserID"];
+	$path    = '../../../User/UploadedFiles/User'.$UserId;
 	
 	
 	
@@ -53,17 +55,18 @@
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
+				$id=$row["FileId"];
 				if($row["Reviewed"]=="1")
 					$reviewed=1;
 				else if($row["Reviewed"]=="-1") 
 					$reviewed=-1;
 					else $reviewed=0;
 		 	}
-			$cerere=new UserFile(1,$reviewed,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/CerereInscriere.".pathinfo($matching[0])['extension']);
+			$cerere=new UserFile(1,$reviewed,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/CerereInscriere.".pathinfo($matching[0])['extension'],$id);
 		}
 	}else{
 		//echo "no";
-		$cerere=new UserFile(0,0," ");
+		$cerere=new UserFile(0,0," ",0);
 	}
 	
 	
@@ -76,17 +79,18 @@
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
+				$id=$row["FileId"];
 				if($row["Reviewed"]=="1")
 					$reviewed=1;
 				else if($row["Reviewed"]=="-1") 
 					$reviewed=-1;
 					else $reviewed=0;
 			}
-			$CV=new UserFile(1,$reviewed,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/CV.".pathinfo($matching[0])['extension']);
+			$CV=new UserFile(1,$reviewed,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/CV.".pathinfo($matching[0])['extension'],$id);
 		}
 	}else{
 		//echo "no";
-		$CV=new UserFile(0,0," ");
+		$CV=new UserFile(0,0," ",0);
 	}
 	
 	
@@ -99,17 +103,18 @@
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
+				$id=$row["FileId"];
 				if($row["Reviewed"]=="1")
 					$reviewed=1;
 				else if($row["Reviewed"]=="-1") 
 					$reviewed=-1;
 					else $reviewed=0;
 			}
-			$AutoEvaluare=new UserFile(1,$reviewed,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/AutoEvaluare.".pathinfo($matching[0])['extension']);
+			$AutoEvaluare=new UserFile(1,$reviewed,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/AutoEvaluare.".pathinfo($matching[0])['extension'],$id);
 		}
 	}else{
 		//echo "no";
-		$AutoEvaluare=new UserFile(0,0," ");
+		$AutoEvaluare=new UserFile(0,0," ",0);
 	}
 	if($matching = glob($path."/Recomadare.*")){
 		//echo "yes";
@@ -120,17 +125,18 @@
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
+				$id=$row["FileId"];
 				if($row["Reviewed"]=="1")
 					$reviewed=1;
 				else if($row["Reviewed"]=="-1") 
 					$reviewed=-1;
 					else $reviewed=0;
 			}
-			$Recomadare=new UserFile(1,$reviewed,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/Recomadare.".pathinfo($matching[0])['extension']);
+			$Recomadare=new UserFile(1,$reviewed,"http://localhost/MyWebsites/ManageFiles/User/UploadedFiles/User".$UserId."/Recomadare.".pathinfo($matching[0])['extension'],$id);
 		}
 	}else{
 		//echo "no";
-		$Recomadare=new UserFile(0," ");
+		$Recomadare=new UserFile(0,0," ",0);
 	}
 	
 	$files["Cerere"]=$cerere;
