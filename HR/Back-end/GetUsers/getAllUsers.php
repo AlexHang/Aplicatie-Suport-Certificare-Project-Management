@@ -1,4 +1,6 @@
 <?php
+
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -15,22 +17,21 @@ if ($conn->connect_error) {
 	//echo "Connected successfully";
 }
 
-
-	$sql = "SELECT * FROM `users` WHERE `Email` Like '%".$_POST["Email"]."%' 
-									AND `Password` LIKE '".$_POST["Password"]."'";
-	$result = $conn->query($sql);
-	//echo $sql;
-
-
-	if ($result->num_rows > 0) {
-		http_response_code(200);
-		while($row = $result->fetch_assoc()) {
-			echo $row["ID"];
-		}
-	}else{
-		http_response_code(500);
-	}
-
+$sql = "SELECT * FROM `users` WHERE `Company` LIKE '%".$_GET["Company"]."%'";
+$result = $conn->query($sql);
+$response=array();
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+       $response[]=$row;
+    }
+	echo json_encode($response);
+	
+	
+} else {
+    echo "0 results";
+}
+$conn->close();
 
 
 

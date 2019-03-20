@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 
-$sql = "SELECT * FROM `users` WHERE `Email` Like '%".$_POST["Email"]."%'";
+$sql = "SELECT * FROM `HR` WHERE `Email` Like '%".$_POST["Email"]."%'";
 $result = $conn->query($sql);
 //echo $sql;
 
@@ -26,20 +26,19 @@ if ($result->num_rows > 0) {
 }
 else{
 	// prepare and bind
-	$stmt = $conn->prepare("INSERT INTO `users` (`FirstName`, `LastName`, `Email`, `Company`, `Password`)
-							VALUES (?, ?, ?, ?, ?);");
-	$stmt->bind_param("sssss", $firstname, $lastname, $email,$company, $password);
+	$stmt = $conn->prepare("INSERT INTO `HR` (`Email`, `Password`, `Company`) 
+							VALUES ( ? , ? , ?);");
+	$stmt->bind_param("sss", $email, $password, $company);
 
 	// set parameters and execute
-	$firstname = $_POST["FirstName"];
-	$lastname = $_POST["LastName"];
 	$email = $_POST["Email"];
-	$company = $_POST["Company"];
 	$password = $_POST["Password"];
+	$company = $_POST["Company"];
+	
 	$stmt->execute();
 	echo "OK";
 	
-	mkdir("../../UploadedFiles/User".$stmt->insert_id);
+	//mkdir("../../UploadedFiles/User".$stmt->insert_id);
 	
 	
 	$stmt->close();

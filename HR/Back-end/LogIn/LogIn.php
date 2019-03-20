@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 
-	$sql = "SELECT * FROM `users` WHERE `Email` Like '%".$_POST["Email"]."%' 
+	$sql = "SELECT * FROM `HR` WHERE `Email` Like '%".$_POST["Email"]."%' 
 									AND `Password` LIKE '".$_POST["Password"]."'";
 	$result = $conn->query($sql);
 	//echo $sql;
@@ -25,7 +25,7 @@ if ($conn->connect_error) {
 	if ($result->num_rows > 0) {
 		http_response_code(200);
 		while($row = $result->fetch_assoc()) {
-			echo $row["ID"];
+			echo $row["Company"];
 		}
 	}else{
 		http_response_code(500);

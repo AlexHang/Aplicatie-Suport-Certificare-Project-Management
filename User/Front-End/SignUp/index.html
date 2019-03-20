@@ -70,6 +70,13 @@ span.psw {
      width: 100%;
   }
 }
+
+select{
+	padding:5px;
+	display:block;
+	margin-bottom:5px;
+	margin-top:5px;
+}
 </style>
 </head>
 <body>
@@ -92,6 +99,17 @@ span.psw {
     <label for="Email"><b>Email</b></label>
     <input type="text" placeholder="Enter Email" id="Email" required>
 
+	<label for="Company"><b>Company</b></label>
+	<select id="Company" required>
+		<option value="0">No company</option>
+		<option value="IBM">IBM</option>
+		<option value="Microsoft">Microsoft</option>
+		<option value="Renault">Renault</option>
+		<option value="Oracle">Oracle</option>
+		<option value="DELL">DELL</option>
+		<option value="Dacia">Dacia</option>
+	</select>
+	
     <label for="Password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" id="Password" required>
 	
@@ -118,6 +136,7 @@ span.psw {
 				"LastName":$("#LastName").val(),
 				"Email":$("#Email").val(),
 				"Password":$("#Password").val(),
+				"Company":$("#Company").val(),
 			
 			},
 			success: function(data) {
@@ -127,6 +146,8 @@ span.psw {
 			error: function (xhr, ajaxOptions, thrownError) {
 			//alert(xhr.status);
 			console.log(xhr.status);
+			console.log(xhr);
+			console.log(thrownError);
 			if(xhr.status=='200'){
 				window.alert("ok");
 				

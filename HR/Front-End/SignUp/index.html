@@ -3,8 +3,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;
@@ -76,61 +76,68 @@ span.psw {
 
 <h1><br /></h1>
 
-<form >
+<form id="SignUpForm">
   <div class="imgcontainer">
-    <img src="https://www.w3schools.com/HOWTO/img_avatar.png" alt="Avatar" class="avatar">
+    <img src="https://www.w3schools.com/HOWTO/img_avatar2.png" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" id="Email" name="uname" required>
+ 
+    <label for="Email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" id="Email" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" id="Password" name="psw" required>
+    <label for="Password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" id="Password" required>
+	
+	<select id="Company" required>
+		<option value="0">No company</option>
+		<option value="IBM">IBM</option>
+		<option value="Microsoft">Microsoft</option>
+		<option value="Renault">Renault</option>
+		<option value="Oracle">Oracle</option>
+		<option value="DELL">DELL</option>
+		<option value="Dacia">Dacia</option>
+	</select>
         
-    <button type="button" onclick="LogIn()">Login</button>
+    <button type="button" onclick="SignUp()">Sign Up</button>
   </div>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
+  
 </form>
+
 <script type="text/javascript">
 
-	function LogIn(){
+	function SignUp(){
 	
 	
 		console.log("started");
 			 $.ajax({
-			url: 'http://localhost/MyWebsites/ManageFiles/User/Back-end/LogIn/LogIn.php',
+			url: 'http://localhost/MyWebsites/ManageFiles/HR/Back-end/SignUp/SignUp.php',
 			type: 'post',
-			//dataType: 'json',
+			dataType: 'json',
 			data: {
 				"Email":$("#Email").val(),
 				"Password":$("#Password").val(),
+				"Company":$("#Company").val(),
 			
 			},
 			success: function(data) {
 					   console.log(data);
-					   window.alert(data);
-					   localStorage.setItem('UserId', data);
-						console.log(localStorage.getItem('UserID'));
-						window.location.href="../MainPage/index.html"
+					   window.location.href="../LogIn/index.html"
 					 },
 			error: function (xhr, ajaxOptions, thrownError) {
 			//alert(xhr.status);
 			console.log(xhr.status);
 			if(xhr.status=='200'){
 				window.alert("ok");
+				
 			}
 			if(xhr.status=='500'){
-				window.alert("Error: Wrong Username or Password");
+				window.alert("Error: There is already an account created with this email !");
 			}
 		  }
 		});
 	}
-
 
 </script>
 </body>

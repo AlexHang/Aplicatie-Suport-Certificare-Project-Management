@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 
 
 	$sql = "SELECT * FROM `admins` WHERE `Email` Like '%".$_POST["Email"]."%' 
-									AND `Password` LIKE '%".$_POST["Password"]."%'";
+									AND `Password` LIKE '".$_POST["Password"]."'";
 	$result = $conn->query($sql);
 	//echo $sql;
 

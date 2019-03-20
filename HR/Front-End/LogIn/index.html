@@ -78,7 +78,7 @@ span.psw {
 
 <form >
   <div class="imgcontainer">
-    <img src="https://www.w3schools.com/HOWTO/img_avatar.png" alt="Avatar" class="avatar">
+    <img src="https://www.w3schools.com/HOWTO/img_avatar2.png" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
@@ -103,7 +103,7 @@ span.psw {
 	
 		console.log("started");
 			 $.ajax({
-			url: 'http://localhost/MyWebsites/ManageFiles/User/Back-end/LogIn/LogIn.php',
+			url: 'http://localhost/MyWebsites/ManageFiles/HR/Back-end/LogIn/LogIn.php',
 			type: 'post',
 			//dataType: 'json',
 			data: {
@@ -114,8 +114,8 @@ span.psw {
 			success: function(data) {
 					   console.log(data);
 					   window.alert(data);
-					   localStorage.setItem('UserId', data);
-						console.log(localStorage.getItem('UserID'));
+					   localStorage.setItem('HRID', data);
+						console.log(localStorage.getItem('HRID'));
 						window.location.href="../MainPage/index.html"
 					 },
 			error: function (xhr, ajaxOptions, thrownError) {
